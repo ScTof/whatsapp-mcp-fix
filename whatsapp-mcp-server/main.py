@@ -257,6 +257,5 @@ def download_media(message_id: str, chat_jid: str) -> Dict[str, Any]:
         }
 
 if __name__ == "__main__":
-    print(list_chats(limit=5))
     # Initialize and run the server
     mcp.run(transport='stdio')
