@@ -41,7 +41,7 @@ def list_messages(
     include_context: bool = True,
     context_before: int = 1,
     context_after: int = 1
-) -> List[Dict[str, Any]]:
+) -> List[str]:
     """Get WhatsApp messages matching specified criteria with optional context.
     
     Args:
@@ -68,8 +68,7 @@ def list_messages(
         context_before=context_before,
         context_after=context_after
     )
-    messages_dict = [message.__dict__ for message in messages]
-    return messages_dict
+    return messages
 
 @mcp.tool()
 def list_chats(
@@ -139,7 +138,7 @@ def get_contact_chats(jid: str, limit: int = 20, page: int = 0) -> List[Dict[str
     return chats_dict
 
 @mcp.tool()
-def get_last_interaction(jid: str) -> str:
+def get_last_interaction(jid: str) -> Optional[str]:
     """Get most recent WhatsApp message involving the contact.
     
     Args:
