@@ -116,7 +116,7 @@ def format_messages_list(messages: List[Message], show_chat_info: bool = True) -
     output = []
 
     for message in messages:
-        output += format_message(message, show_chat_info)
+        output.append(format_message(message, show_chat_info))
 
     return output
 
