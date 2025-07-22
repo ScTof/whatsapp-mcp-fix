@@ -400,12 +400,17 @@ def list_chats(
         
         result = []
         for chat_data in chats:
+            last_sender = chat_data[4]
+            if last_sender is None:
+                last_message_time = None
+            else:
+                last_message_time = __parse_timestamp(chat_data[2])
             chat = Chat(
                 jid=chat_data[0],
                 name=chat_data[1],
-                last_message_time=__parse_timestamp(chat_data[2]) if chat_data[2] else None,
+                last_message_time=last_message_time,
                 last_message=chat_data[3],
-                last_sender=chat_data[4],
+                last_sender=last_sender,
                 last_is_from_me=chat_data[5]
             )
             result.append(chat)
